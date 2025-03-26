@@ -9,7 +9,7 @@ let  productImage = document.getElementById("productImage");
 
 
 if (localStorage.getItem("myProducts")==null) {
-let productItems=[];
+var productItems=[];
     
 
 }
