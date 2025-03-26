@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="py-5 m-auto">
+        <h3>Add Category</h3>
+      </div>
+
+      <label for="">Category Id :</label>
+      <input class="form-control my-2" type="number" id="categoryId" />
+
+      <label for="">Category Name :</label>
+      <input class="form-control my-2" type="text" id="categoryName" />
+
+
+      <button onclick="addCategory()" id="addBtn" class="btn btn-info mt-2">
+        Add Category
+      </button>
+    </div>
+
+    <div class="container mt-5">
+      <div class="py-5 m-auto">
+        <h3>Our Categories</h3>
+      </div>
+
+      <table class="table text-center">
+        <thead>
+          <th>Category Id</th>
+          <th>Category Name</th>
+        
+          <th>Update</th>
+          <th>Delete</th>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script src="/assets/js/category.js"></script>
+  </body>
+</html>

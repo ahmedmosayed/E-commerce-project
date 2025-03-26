@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smartphone Store</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo"><a href="index.html">Phone Store</a></div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search for a product...">
+      <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="header-icons">
+      <div class="login-icon">
+        <a href="../auth/login.html">
+          <i class="fas fa-user">
+          </i></a>
+      </div>
+      <div class="wishlist">
+        <a href="wishlist.html">
+          <i class="fas fa-heart"></i>
+          <span id="wishlist-count">0</span>
+        </a>
+      </div>
+      <div class="cart">
+        <a href="cart.html">
+          <span id="cart-count">0</span> 🛒
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="cart.html" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span id="nav-cart-count" class="nav-count">0</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="wishlist.html" class="nav-link">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+            <span id="nav-wishlist-count" class="nav-count">0</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="orders.html" class="nav-link">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Orders</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/pages/auth/login.html" class="nav-link" id="login-nav-link">
+            <i class="fas fa-user"></i>
+            <span id="nav-login-text">Login</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <div class="categories">
+        <button onclick="showCategory('all')">All Products</button>
+        <button onclick="showCategory('phones')">Phones</button>
+        <button onclick="showCategory('accessories')">Accessories</button>
+        <button onclick="showCategory('watches')">Watches</button>
+      </div>
+      <hr>
+
+      <h3>Filters</h3>
+
+      <!-- Price Filter -->
+      <div class="filter">
+        <label>Price:</label>
+        <div class="price-range">
+          <input type="number" id="min-price" min="0" placeholder="Min Price">
+          <span>to</span>
+          <input type="number" id="max-price" min="0" placeholder="Max Price">
+        </div>
+        <hr>
+      </div>
+
+      <!-- Brand Filter -->
+      <div class="filter">
+        <div class="filter-header" onclick="toggleFilter('brand')">
+          <label>Brands</label>
+          <i class="fas fa-chevron-down" id="brand-arrow"></i>
+        </div>
+        <div class="filter-options" id="brand-options">
+          <div>
+            <input type="checkbox" id="brand-samsung" value="samsung">
+            <label for="brand-samsung">Samsung</label>
+          </div>
+          <div>
+            <input type="checkbox" id="brand-apple" value="apple">
+            <label for="brand-apple">Apple</label>
+          </div>
+          <div>
+            <input type="checkbox" id="brand-huawei" value="huawei">
+            <label for="brand-huawei">Huawei</label>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <!-- Color Filter -->
+      <div class="filter">
+        <div class="filter-header" onclick="toggleFilter('color')">
+          <label>Colors</label>
+          <i class="fas fa-chevron-down" id="color-arrow"></i>
+        </div>
+        <div class="filter-options" id="color-options">
+          <div>
+            <input type="checkbox" id="color-black" value="black">
+            <label for="color-black">Black</label>
+          </div>
+          <div>
+            <input type="checkbox" id="color-white" value="white">
+            <label for="color-white">White</label>
+          </div>
+          <div>
+            <input type="checkbox" id="color-gold" value="gold">
+            <label for="color-gold">Gold</label>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <!-- Storage Filter -->
+      <div class="filter">
+        <div class="filter-header" onclick="toggleFilter('storage')">
+          <label>Storage</label>
+          <i class="fas fa-chevron-down" id="storage-arrow"></i>
+        </div>
+        <div class="filter-options" id="storage-options">
+          <div>
+            <input type="checkbox" id="storage-64" value="64">
+            <label for="storage-64">64 GB</label>
+          </div>
+          <div>
+            <input type="checkbox" id="storage-128" value="128">
+            <label for="storage-128">128 GB</label>
+          </div>
+          <div>
+            <input type="checkbox" id="storage-256" value="256">
+            <label for="storage-256">256 GB</label>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <button onclick="applyFilters()">Apply Filters</button>
+      <button onclick="resetFilters()">Reset Filters</button>
+    </aside>
+
+    <main class="products">
+      <div class="sort-header">
+        <h2 id="category-title">All Products</h2>
+        <div class="sort-options">
+          <label>Sort by:</label>
+          <select id="sort-by" onchange="sortProducts()">
+            <option value="default">Default</option>
+            <option value="price-high-to-low">Price: High to Low</option>
+            <option value="price-low-to-high">Price: Low to High</option>
+            <option value="name-a-to-z">Name: A to Z</option>
+          </select>
+        </div>
+
+      </div>
+      <div id="products-list">
+        <!-- Products will be displayed here -->
+      </div>
+    </main>
+  </div>
+
+<script src="../../assets/js/script.js"></script>
+</body>
+
+</html>

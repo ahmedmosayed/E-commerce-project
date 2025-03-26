@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo"><a href="index.html">Phone Store</a></div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search for a product...">
+      <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="header-icons">
+      <div class="login-icon"><i class="fas fa-user"></i></div>
+      <div class="wishlist">
+        <a href="wishlist.html">
+          <i class="fas fa-heart"></i>
+          <span id="wishlist-count">0</span>
+        </a>
+      </div>
+      <div class="cart">
+        <a href="cart.html">
+          <span id="cart-count">0</span> 🛒
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="cart.html" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span id="nav-cart-count" class="nav-count">0</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="wishlist.html" class="nav-link">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+            <span id="nav-wishlist-count" class="nav-count">0</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="orders.html" class="nav-link">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Orders</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="../auth/login.html" class="nav-link" id="login-nav-link">
+            <i class="fas fa-user"></i>
+            <span id="nav-login-text">Login</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="container-checkout">
+  <h1>إتمام عملية الشراء</h1>
+  <br>
+  <form id="checkout-form">
+    <div class="form-group">
+      <label for="name">الاسم بالكامل*</label>
+      <input type="text" id="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">رقم الهاتف*</label>
+      <input type="tel" id="phone" required >
+      <small class="hint">سيستخدم للتواصل بخصوص الطلب</small>
+    </div>
+
+    <div class="form-group">
+      <label for="address">العنوان بالتفصيل*</label>
+      <textarea id="address" rows="3" required></textarea>
+    </div>
+
+    <div class="form-group" >
+      <label for="payment">طريقة الدفع*</label>
+      <select id="payment" required style="text-align:center;">
+        <option value="">اختر طريقة الدفع</option>
+        <option value="cash">الدفع عند الاستلام</option>
+        <option value="credit">بطاقة ائتمانية</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">ملاحظات إضافية (اختياري)</label>
+      <textarea id="notes" rows="2"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">تأكيد الطلب</button>
+  </form>
+</div>
+
+  <script src="../../assets/js/script.js"></script>
+</body>
+
+</html>
