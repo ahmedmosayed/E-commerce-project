@@ -454,6 +454,12 @@ function isValidPhone(phone) {
 function placeOrder(event) {
   event.preventDefault();
 
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cartItems.length === 0) {
+    showToast('Your cart is empty. Cannot place order');
+    return;
+  }
+
   // التحقق من تسجيل الدخول
   if (!isLoggedIn()) {
     showToast('Please login to complete your order');
@@ -667,4 +673,29 @@ document.addEventListener('DOMContentLoaded', () => {
   updateNavCounters();
 });
 
+function proceedToCheckout() {
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  if (cartItems.length === 0) {
+    showToast('Your cart is empty. Add products before checkout');
+    return;
+  }
+  
+  if (isLoggedIn()) {
+    window.location.href = '../../pages/customer/checkout.html';
+  } else {
+    showToast('Please login first to complete your purchase');
+    window.location.href = '../../pages/auth/login.html?redirect=checkout';
+  }
+}
 
+// إضافة Event Listener لزر Checkout
+document.addEventListener('DOMContentLoaded', () => {
+  const checkoutBtn = document.getElementById('checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      proceedToCheckout();
+    });
+  }
+});
