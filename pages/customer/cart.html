@@ -83,23 +83,7 @@
   </div>
 
   <script src="../../assets/js/script.js">
-   // // دالة التحقق قبل التوجه إلى صفحة الدفع
-      function checkout() {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        if (cartItems.length === 0) {
-          showToast('Your cart is empty');
-          return;
-        }
-
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (!user) {
-          showToast('Please login to complete your order');
-          window.location.href = '../auth/login.html';
-        } else {
-          window.location.href = 'checkout.html';
-        }
-      }
-  </script>
+     </script>
 </body>
 
 </html>
