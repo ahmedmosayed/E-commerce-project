@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (user.role === "admin") {
             window.location.href = "/admin/products.html";
         } else {
-            window.location.href = "index.html";
+            window.location.href = "/pages/customer/index.html";
         }
         
 });
