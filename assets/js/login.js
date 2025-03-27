@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
         
         
         if (user.role === "admin") {
-            window.location.href = "/admin/products.html";
+            window.location.href = "../../admin/products.html";
         } else {
-            window.location.href = "pages/customer/index.html";
+            window.location.href = "../../pages/customer/index.html";
         }
         
 });
