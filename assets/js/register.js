@@ -41,6 +41,6 @@ localStorage.setItem("lastUserId", lastUserId.toString());
         localStorage.setItem("users", JSON.stringify(users));
 
         alert("Registration successful! You can now login.");
-        window.location.href = "/pages/auth/login.html";
+        window.location.href = "login.html";
     });
 });
